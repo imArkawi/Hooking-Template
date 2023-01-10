@@ -1,6 +1,6 @@
 # Hooking-Template
 
-[![License](https://img.shields.io/github/imArkawi/Hooking-Template/blob/master/LICENSE?logo=github&logoColor=%23fff&style=for-the-badge)](LICENSE)
+[![License](https://img.shields.io/github/imArkawi/license/Hooking-Template?logo=github&logoColor=%23fff&style=for-the-badge)](LICENSE)
 [![Discord](https://img.shields.io/discord/720937884814671923?color=%237289DA&logo=discord&logoColor=%23fff&style=for-the-badge)](https://discord.gg/JuJHbEAN)
 ![Size](https://img.shields.io/github/repo-size/imArkawi/Hooking-Template?style=for-the-badge)
 
