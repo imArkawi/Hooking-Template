@@ -38,7 +38,8 @@ With the path of the target game’s main activity which we determined earlier c
 With overlay permission
 Search for OnCreate method and paste this code inside
 
-```invoke-static {p0}, Lcom/android/support/Main;->Start(Landroid/content/Context;)V```
+```invoke-static {p0}, Lcom/android/support/Main;->Start(Landroid/content/Context;)V
+```
 
 ![](https://i.ibb.co/NsJyky8/3.png)
 
@@ -47,7 +48,8 @@ Open the game's AndroidManifest.xml
 
 Add the SYSTEM_ALERT_WINDOW permission besides other permissions if it doesn't exist. Doesn't matter where you place it as long as it's above the application tag
 
-```<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>```
+```<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+```
 
 ![](https://i.ibb.co/f96mQz2/5.png)
 
@@ -57,7 +59,8 @@ If you don't add it, you can't enable overlay permission, it will be greyed out
 Add the service above the end tag of application
 
 ```<service android:name="com.android.support.Launcher" android:enabled="true"
-    android:exported="false" android:stopWithTask="true" />```
+    android:exported="false" android:stopWithTask="true" />
+```
     
 ![](https://i.ibb.co/QFTN4VK/6.png)
 
@@ -86,7 +89,8 @@ But if you are unsure, just give it a try.
 
 Search for OnCreate method and paste this code inside
 
-```invoke-static {p0}, Lcom/android/support/Main;->StartWithoutPermission(Landroid/content/Context;)V```
+```invoke-static {p0}, Lcom/android/support/Main;->StartWithoutPermission(Landroid/content/Context;)V
+```
 
 ![](https://i.ibb.co/NVHfs3n/10.png)
 
@@ -104,7 +108,8 @@ On yout MainActivity.java, put the game's main activity to public String GameAct
 
 Uncomment this code
 
-```Toast.makeText(MainActivity.this, "Error. Game's main activity does not exist", Toast.LENGTH_LONG).show();```
+```Toast.makeText(MainActivity.this, "Error. Game's main activity does not exist", Toast.LENGTH_LONG).show();
+```
 On AndroidManifest.xml, remove <action android:name="android.intent.action.MAIN"/> from the game's activity, like this:
 
 ![](https://i.ibb.co/v4LSLkj/12.png)
@@ -121,14 +126,16 @@ Add your activity tag. com.android.support.MainActivity is your main activity
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
     </intent-filter>
-</activity>```
+</activity>
+```
 
 ![](https://i.ibb.co/WktFWzS/13.png)
 
 
 Add the SYSTEM_ALERT_WINDOW permission besides other permissions if it doesn't exist. Doesn't matter where you place it as long as it's above the application tag
 
-```<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>```
+```<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+```
 
 ![](https://i.ibb.co/f96mQz2/5.png)
 
@@ -138,7 +145,8 @@ If you don't add it, you can't enable overlay permission, it will be greyed out
 Add the service above the end of application tag (change the package name of your menu if you had changed it)
 
 ```<service android:name="com.android.support.Launcher" android:enabled="true"
-    android:exported="false" android:stopWithTask="true" />```
+    android:exported="false" android:stopWithTask="true" />
+```
     
 ![](https://i.ibb.co/QFTN4VK/6.png)
 
