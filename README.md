@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/discord/720937884814671923?color=%237289DA&logo=discord&logoColor=%23fff&style=for-the-badge)](https://discord.gg/JuJHbEAN)
 ![Size](https://img.shields.io/github/repo-size/imArkawi/Hooking-Template?style=for-the-badge)
 
-## My Website:
+## Wiki:
 * https://imarkawi.github.io/arkamods/
 
 ### 1. Know your game's main activity
