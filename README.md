@@ -10,14 +10,17 @@
 ### 1. Know your game's main activity
 Now we are looking for main activity
 
-Decompile the game's APK file. Open AndroidManifest.xml and search after <action android:name="android.intent.action.MAIN"/>.
+Decompile the game's APK file. Open AndroidManifest.xml and search after 
+<action android:name="android.intent.action.MAIN"/>.
 
 Example the game's main activity was com.unity3d.player.UnityPlayerActivity. Be sure to enable Word wrap so it is easier to read
+
 ![](https://i.ibb.co/XFXBfZq/1.png)
 
 
 APK Easy Tool since it can read out location of main activity without decompiling APK
 
+![](https://i.ibb.co/Vg63z9h/2.png)
 
 
 Note it somewhere to remember it. You can use any tools in your choice
@@ -37,12 +40,16 @@ Search for OnCreate method and paste this code inside
 
 ```invoke-static {p0}, Lcom/android/support/Main;->Start(Landroid/content/Context;)V```
 
+![](https://i.ibb.co/NsJyky8/3.png)
+
 
 Open the game's AndroidManifest.xml
 
 Add the SYSTEM_ALERT_WINDOW permission besides other permissions if it doesn't exist. Doesn't matter where you place it as long as it's above the application tag
 
 ```<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>```
+
+![](https://i.ibb.co/f96mQz2/5.png)
 
 
 If you don't add it, you can't enable overlay permission, it will be greyed out
@@ -51,18 +58,27 @@ Add the service above the end tag of application
 
 ```<service android:name="com.android.support.Launcher" android:enabled="true"
     android:exported="false" android:stopWithTask="true" />```
+    
+![](https://i.ibb.co/QFTN4VK/6.png)
 
 
 Without overlay permission
+
 ONLY use if the game is detecting mod menu. Some games are using old AppCompat or custom activity that may interfere with the layout, such as enforced Kitkat-based layout like this below. I could not find a way to fix yet.
+
+![](https://i.ibb.co/KrcSqdw/7.png)
 
 
 
 We can easly determite that this is an activity
 
+![](https://i.ibb.co/9HjHxVZ/8.png)
+
 
 
 But what about this? It's an application context. Menu will not launch and asks for permission with switch greyed out.
+
+![](https://i.ibb.co/8mYqrMC/9.png)
 
 
 
@@ -72,6 +88,8 @@ Search for OnCreate method and paste this code inside
 
 ```invoke-static {p0}, Lcom/android/support/Main;->StartWithoutPermission(Landroid/content/Context;)V```
 
+![](https://i.ibb.co/NVHfs3n/10.png)
+
 
 If menu is not showing up for some reason, or ask for permission. You need to add overlay permission. See above
 
@@ -80,12 +98,16 @@ This requires overlay permission. Only use if you really want to launch your own
 
 On yout MainActivity.java, put the game's main activity to public String GameActivity
 
+![](https://i.ibb.co/RhnJ1MY/11.png)
+
 
 
 Uncomment this code
 
 ```Toast.makeText(MainActivity.this, "Error. Game's main activity does not exist", Toast.LENGTH_LONG).show();```
 On AndroidManifest.xml, remove <action android:name="android.intent.action.MAIN"/> from the game's activity, like this:
+
+![](https://i.ibb.co/v4LSLkj/12.png)
 
 
 
@@ -101,10 +123,14 @@ Add your activity tag. com.android.support.MainActivity is your main activity
     </intent-filter>
 </activity>```
 
+![](https://i.ibb.co/WktFWzS/13.png)
+
 
 Add the SYSTEM_ALERT_WINDOW permission besides other permissions if it doesn't exist. Doesn't matter where you place it as long as it's above the application tag
 
 ```<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>```
+
+![](https://i.ibb.co/f96mQz2/5.png)
 
 
 If you don't add it, you can't enable overlay permission, it will be greyed out
@@ -113,21 +139,29 @@ Add the service above the end of application tag (change the package name of you
 
 ```<service android:name="com.android.support.Launcher" android:enabled="true"
     android:exported="false" android:stopWithTask="true" />```
+    
+![](https://i.ibb.co/QFTN4VK/6.png)
 
 ### 3. Building your project and copying files
 Build the project to the APK file. Build -> Build Bundle(s)/APK(s) -> Build APK(s)
 
 If no errors occured, you did everything right and build will succeded. You will be notified that it has built successfully
 
+![](https://i.ibb.co/DVFJxZ3/16.png)
+
 
 
 Click on locate to show you the location of build.apk. It is stored at (your-project)\app\build\outputs\apk\app-debug.apk
+
+![](https://i.ibb.co/wcmK963/17.png)
 
 
 
 Decompile your app-debug.apk.
 
 Copy your mod menu from decompiled app-debug.apk smali to the game's smali folder. Example ours is com.android.support.Menu, we copy the com folder from app-debug (decompiled app-debug\smali\com) to the game's decompiled directory (decompiled game)\(any smali folder)
+
+![](https://i.ibb.co/vDKyhXR/18.png)
 
 
 
@@ -137,6 +171,7 @@ Copy the library file (.so) from app-debug.apk to the target game. Watch out the
 
 PUTTING THE LIB FILE ON A WRONG ARCHITECTURE LIKE PUTTING ARM64 LIB TO ARMV7 WILL RESULT A CRASH!
 
+![](https://i.ibb.co/zFFC2gT/19.png)
 
 
 ### 4. Compiling game apk
