@@ -4,10 +4,10 @@
 [![Discord](https://img.shields.io/discord/720937884814671923?color=%237289DA&logo=discord&logoColor=%23fff&style=for-the-badge)](https://discord.gg/JuJHbEAN)
 ![Size](https://img.shields.io/github/repo-size/imArkawi/Hooking-Template?style=for-the-badge)
 
-### My Website:
+## My Website:
 * https://imarkawi.github.io/arkamods/
 
-1. Know your game's main activity
+### 1. Know your game's main activity
 Now we are looking for main activity
 
 Decompile the game's APK file. Open AndroidManifest.xml and search after <action android:name="android.intent.action.MAIN"/>.
@@ -22,7 +22,7 @@ APK Easy Tool since it can read out location of main activity without decompilin
 
 Note it somewhere to remember it. You can use any tools in your choice
 
-2. Making corresponding changes
+### 2. Making corresponding changes
 Decompile the game's APK
 
 Now we need to launch your mod menu. There are 2 ways to launch your mod menu. First Method is recommended. Do NOT use both methods at the same time
@@ -35,22 +35,22 @@ With the path of the target game’s main activity which we determined earlier c
 With overlay permission
 Search for OnCreate method and paste this code inside
 
-invoke-static {p0}, Lcom/android/support/Main;->Start(Landroid/content/Context;)V
+```invoke-static {p0}, Lcom/android/support/Main;->Start(Landroid/content/Context;)V```
 
 
 Open the game's AndroidManifest.xml
 
 Add the SYSTEM_ALERT_WINDOW permission besides other permissions if it doesn't exist. Doesn't matter where you place it as long as it's above the application tag
 
-<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+```<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>```
 
 
 If you don't add it, you can't enable overlay permission, it will be greyed out
 
 Add the service above the end tag of application
 
-<service android:name="com.android.support.Launcher" android:enabled="true"
-    android:exported="false" android:stopWithTask="true" />
+```<service android:name="com.android.support.Launcher" android:enabled="true"
+    android:exported="false" android:stopWithTask="true" />```
 
 
 Without overlay permission
@@ -70,7 +70,7 @@ But if you are unsure, just give it a try.
 
 Search for OnCreate method and paste this code inside
 
-invoke-static {p0}, Lcom/android/support/Main;->StartWithoutPermission(Landroid/content/Context;)V
+```invoke-static {p0}, Lcom/android/support/Main;->StartWithoutPermission(Landroid/content/Context;)V```
 
 
 If menu is not showing up for some reason, or ask for permission. You need to add overlay permission. See above
@@ -84,7 +84,7 @@ On yout MainActivity.java, put the game's main activity to public String GameAct
 
 Uncomment this code
 
-Toast.makeText(MainActivity.this, "Error. Game's main activity does not exist", Toast.LENGTH_LONG).show();
+```Toast.makeText(MainActivity.this, "Error. Game's main activity does not exist", Toast.LENGTH_LONG).show();```
 On AndroidManifest.xml, remove <action android:name="android.intent.action.MAIN"/> from the game's activity, like this:
 
 
@@ -93,29 +93,28 @@ If you don't remove <action android:name="android.intent.action.MAIN"/> from the
 
 Add your activity tag. com.android.support.MainActivity is your main activity
 
-<activity android:configChanges="keyboardHidden|orientation|screenSize"
+```<activity android:configChanges="keyboardHidden|orientation|screenSize"
     android:name="com.android.support.MainActivity" android:exported="true">
     <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
     </intent-filter>
-</activity>
+</activity>```
 
 
 Add the SYSTEM_ALERT_WINDOW permission besides other permissions if it doesn't exist. Doesn't matter where you place it as long as it's above the application tag
 
-<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+```<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>```
 
 
 If you don't add it, you can't enable overlay permission, it will be greyed out
 
 Add the service above the end of application tag (change the package name of your menu if you had changed it)
 
-<service android:name="com.android.support.Launcher" android:enabled="true"
-    android:exported="false" android:stopWithTask="true" />
+```<service android:name="com.android.support.Launcher" android:enabled="true"
+    android:exported="false" android:stopWithTask="true" />```
 
-
-3. Building your project and copying files
+### 3. Building your project and copying files
 Build the project to the APK file. Build -> Build Bundle(s)/APK(s) -> Build APK(s)
 
 If no errors occured, you did everything right and build will succeded. You will be notified that it has built successfully
@@ -140,7 +139,7 @@ PUTTING THE LIB FILE ON A WRONG ARCHITECTURE LIKE PUTTING ARM64 LIB TO ARMV7 WIL
 
 
 
-4. Compiling game apk
+### 4. Compiling game apk
 Now compile and sign the apk, and install it on your device
 
 Congrats. You have successfully implemented a mod menu.
