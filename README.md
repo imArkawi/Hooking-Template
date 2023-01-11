@@ -13,7 +13,7 @@ Now we are looking for main activity
 Decompile the game's APK file. Open AndroidManifest.xml and search after <action android:name="android.intent.action.MAIN"/>.
 
 Example the game's main activity was com.unity3d.player.UnityPlayerActivity. Be sure to enable Word wrap so it is easier to read
-
+![](https://ibb.co/GC7wfvq)
 
 
 APK Easy Tool since it can read out location of main activity without decompiling APK
